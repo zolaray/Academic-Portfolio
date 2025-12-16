@@ -1,0 +1,377 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(30, 60, 114, 0.6), rgba(42, 82, 152, 0.6)), 
+                url(
+                'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    line-height: 1.6;
+  }
+  
+  header {
+    background: rgba(33, 98, 210, 0.664);
+    padding: 20px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo::before {
+    content: "📚";
+    font-size: 36px;
+  }
+  
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 50px; 
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 35px; 
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.96);
+    font-size: 19px; 
+    font-weight: 500;
+    padding: 10px 0; 
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: white;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #e3e9ec;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  .sign-in {
+    background: #43cb6cd6; 
+    color: #1a4a8a;
+    border: none;
+    padding: 14px 28px; 
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+   .sign-in:hover {
+    background: #4bb16184;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 0 6%;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.7rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+    opacity: 0.95;
+  }
+ .study-methods-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+.method-page{
+  background: #f5f7fa;
+  padding: 100px 6% 660px;
+  min-height: 100vh;
+}
+.method-page h1{
+  color: #1345b4;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.method-hero {
+  text-align: center;
+  padding: 100px 0 60px;
+}
+
+.method-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.method-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.method-grid-section {
+  margin: 60px 0;
+}
+/* methods table */
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .method-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.method-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  max-width: 800px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-left: 4px solid #4ad182;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.method-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.method-icon {
+  font-size: 2rem;
+}
+
+.method-card strong{
+  color: #1a1a1a;
+}
+
+.method-card h2 {
+  color: #1345b4;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.method-card h2::before{
+  content: ".";
+  color: #4ad182; /* Green bullet */
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.method-card ul {
+  padding-left: 25px;
+  margin-bottom: 25px;
+}
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+  color: #1345b4;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.back-link:hover {
+  color: #0d3a8a;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .methods-page {
+      padding: 80px 4% 40px;
+  }
+  .method-card {
+      padding: 30px 20px;
+  }
+}
+
+.method-card li {
+  margin-bottom: 10px;
+  color: #444;
+}
+.method-card p {
+  color: #444; 
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.method-content h3 {
+  color: #1a1a1a;
+  margin: 20px 0 10px;
+  font-size: 1.2rem;
+}
+
+.method-content ul {
+  padding-left: 20px;
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.method-tip {
+  background: #f0f7ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border-left: 4px solid #4ad182;
+  color: #5d89d5;
+}
+
+
+/* Comparison Table */
+.method-comparison {
+  margin: 80px 0;
+}
+
+.method-comparison h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgb(23, 14, 14);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  color: #1a1a1a;
+}
+
+thead {
+  background: #1345b4;
+  color: rgb(7, 6, 6);
+}
+
+tbody tr:nth-child(even) {
+  background: #f8fafc;
+  color: rgb(53, 50, 50);
+}
+
+/* CTA Section */
+
+.method-cta {
+  text-align: center;
+  padding: 60px 0;
+  margin-top: 40px;
+  background: #f8fafc;
+
+}
+
+.method-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: rgb(36, 32, 46);
+}
+
+.method-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color: #3f339a;
+}
+/* Animation Enhancements */
+.method-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.dashboard-tease {
+    background: rgba(74, 209, 130, 0.08);
+    border-left: 3px solid #4ad182;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.3s ease;
+}
+
+.method-card:hover .dashboard-tease {
+    background: rgba(74, 209, 130, 0.12);
+}
+
+.card-emoji {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.practice-card:hover .card-emoji {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.preview-exercise {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 12px 0;
+    font-size: 0.9em;
+}

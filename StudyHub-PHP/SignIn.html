@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub - Sign In</title>
+    <link rel="stylesheet" href="styleSign.css">
+</head>
+<body>
+    <div class="back-btn">
+        <a href="index.html">←</a>
+    </div>
+
+    <main class="signin-container">
+        <div class="studyhub-card">
+            <div class="form-toggle">
+                <button class="active">Log In</button>
+                <button>Create Account</button>
+            </div>
+
+  <form id="signup-form" action="signup.php" method="POST">
+    <input type="hidden" name="action" value="signup">
+    <input type="text" name="username" placeholder="Full name" required>
+    <input type="email" name="email" placeholder="Email address" required>
+    <input type="password" name="password" placeholder="Create password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm password" required>
+    <button type="submit">Get Started →</button>
+</form>
+
+<!-- Alert box container -->
+<div id="alert-box" class="alert-box" style="display: none;"></div>
+
+<form id="signin-form" action="SignIn.php" method="POST">
+    <input type="hidden" name="action" value="login">
+    <input type="email" name="email" placeholder="Email address" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <a href="#" class="forgot-link">Forgot password?</a>
+    <button type="submit">Continue →</button>
+</form>
+
+
+            
+
+           
+    </main>
+
+    <script src="signin.js"></script>
+</body>
+</html>

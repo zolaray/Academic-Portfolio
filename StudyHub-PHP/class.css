@@ -1,0 +1,348 @@
+:root {
+  --primary-color: #3b52f5;
+  --primary-light: #e6ecff;
+  --primary-dark: #1329b1;
+  --secondary-color: #00A884;
+  --secondary-light: #E6F4F1;
+  --secondary-dark: #007C66;
+  --danger-color: #d32f2f;
+  --danger-light: #f9d5d5;
+  --danger-dark: #9a1a1a;
+  --border-color: #ccc;
+  --border-radius: 6px;
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-size: 16px;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #dbeeff;
+    margin: 0;
+    padding: 0;
+  }
+
+ .page-header {
+  background-color: #dbeeff;
+  padding: 20px 40px;
+  border-bottom: 2px solid #007bff;
+  text-align: left;
+}
+  
+.page-header h1 {
+  margin: 0;
+  font-size: 45px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+ h1 {
+   text-align: center;
+   font-size: 32px;
+   margin-bottom: 20px;
+   font-weight: bold;
+   color: #2c3e50;
+ }
+
+ .Classe {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #dbeeff;
+    padding: 40px;
+    border-radius: 12px;
+  }
+ 
+  .label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+  
+.section {
+  margin-bottom: 25px;
+}
+  
+.subjects,
+.mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+  
+.subjects button,
+.mode button {
+  padding: 10px 18px;
+  border: 2px solid #007bff;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+  
+.subjects button:hover,
+.mode button:hover {
+  background-color: #007bff;
+  color: white;
+}
+  
+.add-new {
+  border-color: #ff6384;
+  color: #ff6384;
+}
+  
+.add-new:hover {
+  background-color: #ff6384;
+  color: white;
+}
+  
+
+textarea {
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 12px 10px;
+  font-size: 14px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px var(--primary-light);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.option-button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.option-button i {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.option-button:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.option-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.once-container,
+.days-container {
+  margin-bottom: 25px;
+}
+
+.once-container.show {
+  display: block;
+}
+
+.once-container {
+  display: none;
+}
+
+.date-fields {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-control {
+  position: relative;
+  flex: 1;
+}
+
+.form-control select,
+.form-control input[type="time"] {
+  width: 100%;
+  padding: 9px 35px 9px 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.form-control select:focus,
+.form-control input[type="time"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px var(--primary-light);
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  pointer-events: none;
+  font-size: 16px;
+}
+
+.date-display {
+  padding: 10px 15px;
+  background-color: var(--primary-light);
+  border-radius: var(--border-radius);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.date-display .icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.days-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.day-button {
+  flex: 1 1 calc(14.2% - 8px);
+  min-width: 80px;
+  background-color: white;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 10px 5px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.day-button i {
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+.day-button:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.day-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+ .confirmation {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.right-buttons {
+  display: flex;
+  gap: 10px; 
+}
+
+.cancel-btn,
+.save-btn,
+.back-button {
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Cancel button style */
+.cancel-btn {
+  background-color: white;
+  color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.cancel-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Save button style */
+.save-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Back button style */
+.back-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(75, 85, 99, 0.4);
+}
+
+ 
+/* توحيد شكل كل الأزرار */
+button {
+    padding: 10px 15px;          /* نفس الحشو */
+    font-size: 14px;             /* نفس حجم الخط */
+    border-radius: var(--border-radius);  /* نصف القطر متطابق */
+    border: 1px solid var(--border-color); /* حدود متناسقة */
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    min-width: 80px;             /* عرض أدنى لضمان الاتساق */
+    height: 38px;                /* ارتفاع ثابت للأزرار */
+    display: inline-flex;        /* يسمح بمحاذاة الأيقونات والنص بشكل جيد */
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}

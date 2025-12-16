@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="class.css">
+
+  <title>Exams</title>
+</head>
+<body>
+  <header class="page-header">
+    <h1>New Classe</h1>
+  </header>
+
+ <div class="container"></div>
+
+  <div class="Classe">
+    <div class="section">
+      <label class="label">Select Subject*</label>
+      <div class="subjects" id="subject-list">
+        <button>English</button>
+        <button>Mathematics</button>
+        <button>Science</button>
+        <button>Chemistry</button>
+        <button>History</button>
+        <button>Computer Science</button>
+        <button class="add-new" id="add-new-btn">+ Add new</button>
+        <div id="new-subject-form" style="display: none; margin-top: 10px;">
+          <input type="text" id="new-subject-input" placeholder="New Subject" />
+          <button onclick="addSubject()">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="label">Mode</label>
+      <div class="mode">
+        <button>In person</button>
+        <button>Online</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="label">Module*</label>
+      <textarea rows="4"   placeholder="Module Name"></textarea>
+    </div>
+
+    <div class="section">
+      <label class="label">Online URL</label>
+      <textarea rows="4" placeholder="Paste URL Here"></textarea>
+    </div>
+
+        <div class="section-title">Occurs*</div>
+        
+        <div class="option-buttons">
+            <button class="option-button active" id="once-btn">
+                <i class="fas fa-calendar-day" style="margin-right: 8px;"></i> Once
+            </button>
+            <button class="option-button" id="repeating-btn">
+                <i class="fas fa-redo" style="margin-right: 8px;"></i> Repeating
+            </button>
+        </div>
+        
+        <div class="once-container show" id="once-container">
+            <div class="form-group">
+                <label>Date</label>
+                <div class="date-fields">
+                    <div class="form-control">
+                        <select id="day-select">
+                            <option value="">Day</option>
+                        </select>
+                        <span class="icon"><i class="far fa-calendar"></i></span>
+                    </div>
+                    <div class="form-control">
+                        <select id="month-select">
+                            <option value="">Month</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <select id="year-select">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-fields">
+                <div class="form-group">
+                    <label>Start Time</label>
+                    <div class="form-control">
+                        <input type="time" id="start-time">
+                        <span class="icon"><i class="far fa-clock"></i></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>End Time</label>
+                    <div class="form-control">
+                        <input type="time" id="end-time">
+                        <span class="icon"><i class="far fa-clock"></i></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="selected-date-display" class="date-display" style="margin-top: 10px; display: none;">
+                <i class="fas fa-info-circle icon"></i>
+                <span id="date-time-display-text"></span>
+            </div>
+        </div>
+        
+        <div class="days-container" id="days-container">
+            <div class="days-grid">
+                <button class="day-button" data-day="sun"><i class="far fa-sun" style="margin-right: 5px;"></i> Sun</button>
+                <button class="day-button" data-day="mon"><i class="far fa-moon" style="margin-right: 5px;"></i> Mon</button>
+                <button class="day-button" data-day="tue"><i class="fas fa-fire" style="margin-right: 5px;"></i> Tue</button>
+                <button class="day-button" data-day="wed"><i class="fas fa-leaf" style="margin-right: 5px;"></i> Wed</button>
+                <button class="day-button" data-day="thu"><i class="fas fa-bolt" style="margin-right: 5px;"></i> Thu</button>
+                <button class="day-button" data-day="fri"><i class="fas fa-star" style="margin-right: 5px;"></i> Fri</button>
+                <button class="day-button" data-day="sat"><i class="fas fa-umbrella-beach" style="margin-right: 5px;"></i> Sat</button>
+            </div>
+        </div>
+    <div class="section">
+      <label class="label">Duration (In minutes)*</label>
+      <textarea rows="4" placeholder="Duration (In minutes)"></textarea>
+    </div>
+    
+     <div class="confirmation">
+       <button class="back-button" onclick="window.location.href='dashboard.html'">← Back to dashboard
+       <div class="right-buttons">
+       <button class="cancel-btn">Cancel</button>
+        <button class="save-btn">Save</button>
+     </div>
+     </div>
+</div>
+<script src="cls.js"></script>
+
+</body>
+
+</html>

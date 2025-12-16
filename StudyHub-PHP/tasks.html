@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="task.css">
+    <title>Tasks</title>
+</head>
+<body>
+    <header class="page-header">
+        <h1>New Task</h1>
+      </header>
+    
+ <div class="container">
+    <div class="task">
+   
+        <div class=" section">
+            <label class="label"> Select subject*</label>
+            <div class="subjects" id="subject-list">
+                <button>English</button>
+                <button>Mathimathics</button>
+                <button>Science</button>
+                <button>Chimestry</button>
+                <button>History</button>
+                <button>Computer Science</button>
+                <button class="add-new" id="add-new-btn">+ Add new</button>
+                <div id="new-subject-form" style="display: none; margin-top: 10px;">
+                    <input type="text" id="new-subject-input" placeholder="Enter new subject" />
+                    <button onclick="addSubject()">Add</button>
+                  </div>
+                  
+            </div>
+        </div>
+        <div class="section">
+            <label class="label"> Task details</label>
+           <textarea row = "4" placeholder="task description"></textarea>
+        </div>
+         
+        <div class="section">
+        <label class="label"> Type</label>
+        <div class="types">
+            <button>Assignment</button>
+            <button>Reminder</button>
+            <button>Revision</button>
+            <button> Group Project</button>
+            <button>Meeting</button>
+            <button>Reading</button>
+
+         </div>
+    </div>
+    <div class="section_row">
+        <div>
+            <div class="section">
+                <label class="label">Due Date *</label>
+                <input type="text" id="custom-date" placeholder="Select a date" readonly>
+                <div id="calendar" class="calendar hidden"></div>
+              </div>
+        </div>\
+        <div>
+            <label class="label"> Time</label>
+            <input type="time"/>
+        </div>
+    </div>
+
+    <div class="confirmation">
+     <button class="back-button" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+    <div class="right-buttons">
+     <button class="cancel-btn">Cancel</button>
+     <button class="save-btn">Save</button>
+    </div>
+    </div>
+
+   
+    <script src="tsk.js"></script>
+
+</div>
+</body>
+</html>

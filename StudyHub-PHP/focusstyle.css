@@ -1,0 +1,290 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    color: #2d3748;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    background: rgba(33, 98, 210, 0.664);
+    padding: 20px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Logo */
+  .logo {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo::before {
+    content: "📚";
+    font-size: 36px;
+  }
+  
+  /* Navigation Group */
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Increased space between nav and button */
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 35px; /* Larger gap between links */
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.96);
+    font-size: 19px; /* Larger text */
+    font-weight: 500;
+    padding: 10px 0; /* Bigger click area */
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: white;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #e3e9ec;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Buttons */
+  .sign-in {
+    background: #43cb6cd6; /* Warmer gold accent */
+    color: #1a4a8a;
+    border: none;
+    padding: 14px 28px; /* Larger button */
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .sign-in:hover {
+    background: #4bb16184;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main Container Styles */
+.container_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+/* Timer Board Styles */
+.timer-board {
+    background-color: #a4ddf4;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    width: 380px;
+    height: 380px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.timer-board h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+}
+
+/* Mode Selector Styles */
+.mode-selector {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.mode-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    background-color: #f7fafc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    color: #4a5568;
+}
+
+.mode-btn.active {
+    background-color: #4299e1;
+    color: white;
+    border-color: #4299e1;
+}
+
+/* Timer Display Styles */
+.timer-display {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: #2d3748;
+    font-family: 'Courier New', monospace;
+}
+
+/* Controls Styles */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.startbtn, .stopbtn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: none;
+}
+
+.startbtn {
+    background-color: #48bb78;
+    color: white;
+}
+
+.startbtn:hover {
+    background-color: #38a169;
+}
+
+.stopbtn {
+    background-color: #f56565;
+    color: white;
+}
+
+.stopbtn:hover:not(:disabled) {
+    background-color: #e53e3e;
+}
+
+.stopbtn:disabled {
+    background-color: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* Session Types Styles */
+.session-types {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.session-type {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+    color: #4a5568;
+}
+
+.session-type.active {
+    background-color: #4299e1;
+    color: white;
+    border-color: #4299e1;
+}

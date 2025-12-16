@@ -1,0 +1,323 @@
+<div class="tracker-container">
+  <div class="tracker-header">
+    <h3><span class="header-icon">📊</span> Study Analytics</h3>
+  </div>
+  
+  <div class="tracker-input-group">
+    <select id="subject" class="subject-select">
+      <option value="" disabled selected>Select subject</option>
+      <option>web</option>
+      <option>THL</option>
+      <option>Coding</option>
+      <option>Data base </option>
+      <option>networking</option>
+    </select>
+    
+    <div class="time-input">
+      <input type="number" id="minutes" placeholder="Minutes" min="1">
+      <span>minutes</span>
+    </div>
+    
+    <button class="log-btn" onclick="logTime()">
+      <span class="btn-icon">+</span> Log Session
+    </button>
+  </div>
+  
+  <div class="chart-container">
+    <canvas id="chart"></canvas>
+  </div>
+  
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-value" id="total-time">0</div>
+      <div class="stat-label">Total Minutes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="sessions-count">0</div>
+      <div class="stat-label">Sessions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="top-subject">-</div>
+      <div class="stat-label">Top Subject</div>
+    </div>
+  </div>
+  <a href="dashboard.html" class="back-button">
+  ← Back to Dashboard
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const logs = JSON.parse(localStorage.getItem('studyLogs')) || [];
+  let chart;
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', function() {
+    updateChart();
+    updateStats();
+  });
+
+  function logTime() {
+    const subject = document.getElementById('subject').value;
+    const minutes = parseInt(document.getElementById('minutes').value);
+    
+    if (subject && minutes) {
+      logs.push({
+        subject, 
+        minutes,
+        date: new Date().toISOString().split('T')[0] // YYYY-MM-DD
+      });
+      
+      localStorage.setItem('studyLogs', JSON.stringify(logs));
+      updateChart();
+      updateStats();
+      
+      // Reset form
+      document.getElementById('minutes').value = '';
+    } else {
+      alert('Please select a subject and enter minutes!');
+    }
+  }
+
+  function updateChart() {
+    const ctx = document.getElementById('chart').getContext('2d');
+    const subjects = [...new Set(logs.map(log => log.subject))];
+    const data = subjects.map(subject => 
+      logs.filter(log => log.subject === subject)
+         .reduce((sum, log) => sum + log.minutes, 0)
+    );
+
+    if (chart) chart.destroy();
+    
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: subjects,
+        datasets: [{
+          label: 'Study Time (minutes)',
+          data: data,
+          backgroundColor: '#4a6bff',
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `${context.parsed.y} mins (${Math.round(context.parsed.y / getTotalMinutes() * 100)}%)`;
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(0,0,0,0.05)'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function updateStats() {
+    document.getElementById('total-time').textContent = getTotalMinutes();
+    document.getElementById('sessions-count').textContent = logs.length;
+    document.getElementById('top-subject').textContent = getTopSubject() || '-';
+  }
+
+  function getTotalMinutes() {
+    return logs.reduce((sum, log) => sum + log.minutes, 0);
+  }
+
+  function getTopSubject() {
+    if (logs.length === 0) return null;
+    
+    const subjectTotals = {};
+    logs.forEach(log => {
+      subjectTotals[log.subject] = (subjectTotals[log.subject] || 0) + log.minutes;
+    });
+    
+    return Object.entries(subjectTotals)
+      .sort((a, b) => b[1] - a[1])[0][0];
+  }
+</script>
+
+<style>
+ 
+  .tracker-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #4a6bff;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .tracker-header {
+    margin-bottom: 25px;
+  }
+
+  .tracker-header h3 {
+    color: #1345b4;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-icon {
+    font-size: 1.3em;
+  }
+
+  .tracker-input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .subject-select, .time-input input {
+    padding: 12px 15px;
+    border: 2px solid #eaeef7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+
+  .subject-select {
+    flex: 2;
+    min-width: 180px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a6bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+  }
+
+  .subject-select:focus {
+    outline: none;
+    border-color: #4a6bff;
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+  }
+
+  .time-input {
+    flex: 1;
+    min-width: 150px;
+    position: relative;
+  }
+
+  .time-input input {
+    width: 100%;
+    padding-right: 70px;
+  }
+
+  .time-input span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7a8db8;
+    font-size: 0.9rem;
+  }
+
+  .log-btn {
+    flex: 1;
+    min-width: 150px;
+    background: #4a6bff;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .log-btn:hover {
+    background: #3a5bef;
+    transform: translateY(-2px);
+  }
+
+  .btn-icon {
+    font-size: 1.1em;
+  }
+
+  .chart-container {
+    height: 300px;
+    margin-bottom: 30px;
+  }
+
+  .stats-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 120px;
+    background: #f8f9ff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-value {
+    color: #1345b4;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .stat-label {
+    color: #7a8db8;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .tracker-input-group {
+      flex-direction: column;
+    }
+    
+    .subject-select, .time-input, .log-btn {
+      width: 100%;
+    }
+  }
+         .back-button {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+</style>

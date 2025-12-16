@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks - Classes dash</title>
+  <link rel="stylesheet" href="clasdash.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body>
+    <div class="container">
+  <aside class="sidebar">
+    <div class="logo"><h2>Study hub</h2></div>
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="active">
+            <i class="fa-solid fa-gauge-high"></i> <h3>Dashboard</h3>
+          </a>
+        </li>
+        <li>
+          <button class="sidebar-toggle">
+            <i class="fa-solid fa-list-check"></i> <h3>Activities ▼</h3>
+          </button>
+          <ul class="submenu">
+            <li><a href="Exams.html" data-page="exams"><i class="fa-solid fa-file-lines"></i> <h5>Exams</h5></a></li>
+            <li><a href="#" data-page="class"><i class="fa-solid fa-chalkboard-user"></i> <h5>Classes</h5></a></li>
+            <li><a href="tasksdash.html" data-page="tasks"><i class="fa-solid fa-check-circle"></i> <h5>Tasks</h5></a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="focus mode.html">
+            <i class="fa-solid fa-stopwatch"></i> <h3>Focus Timer</h3>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+</div>
+
+
+  <main class="main-content">
+    <header>
+     <div class="time-date">
+      <h1 id="clock">--:--</h1>
+       <p id="date">Loading date...</p>
+      </div>
+    </header>
+
+    <section class="tasks-section">
+      <div class="tabs">
+        <div class="tab-buttons">
+          <button class="tab active" onclick="showTab('current')">Current</button>
+        
+        
+        </div>
+          
+        <div class="filter-container">
+  <div class="filter-dropdown-wrapper">
+    <button class="filter-button" onclick="toggleFilter()">Filter by subject</button>
+    <div id="subject-dropdown" class="dropdown">
+      <label class="subject-option">
+        <input type="checkbox" value="English" />
+        <span class="dot" style="background:#a0c4ff;"></span> English
+      </label>
+      <label class="subject-option">
+        <input type="checkbox" value="Mathematics" />
+        <span class="dot" style="background:#bdb2ff;"></span> Mathematics
+      </label>
+      <label class="subject-option">
+        <input type="checkbox" value="History" />
+        <span class="dot" style="background:#ffc6ff;"></span> History
+      </label>
+      <label class="subject-option">
+        <input type="checkbox" value="Geography" />
+        <span class="dot" style="background:#caffbf;"></span> computer science
+      </label>
+    </div>
+  </div>
+</div>
+
+    </div>
+      </div>
+
+      <div id="current" class="tab-content active">
+        <div class="empty-state">
+          <img src="images.png" alt="Add Task" />
+        <a href="classes.html" target="_self" ><p>Add Class </p></a></li>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="tsksdash.js"></script>
+</body>
+</html>

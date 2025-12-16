@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dash.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body>
+  <div class="container">
+  <aside class="sidebar">
+    <div class="logo"><h2>Study hub</h2></div>
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="active">
+            <i class="fa-solid fa-gauge-high"></i> <h3>Dashboard</h3> </a>
+        </li>
+        <li>
+          <button class="sidebar-toggle">
+            <i class="fa-solid fa-list-check"></i> <h3>Activities ▼</h3>
+          </button>
+          <ul class="submenu">
+            <li><a href="Examdash.html" data-page="exams"><i class="fa-solid fa-file-lines"></i> <h5>Exams</h5></a></li>
+            <li><a href="classdash.html" data-page="class"><i class="fa-solid fa-chalkboard-user"></i> <h5>Classes</h5></a></li>
+            <li><a href="tasksdash.html" data-page="tasks"><i class="fa-solid fa-check-circle"></i> <h5>Tasks</h5></a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="focus mode.html">
+            <i class="fa-solid fa-stopwatch"></i> <h3>Focus Timer</h3>
+          </a>
+        </li>
+         <li>
+      <a href="productivity.html">
+        <i class="fa-solid fa-chart-line"></i> <h3>Productivity Tool</h3>
+      </a>
+    </li>
+    <li>
+      <a href="Todolist.html">
+        <i class="fa-solid fa-list"></i> <h3>To-Do List</h3>
+      </a>
+    </li>
+    <li><a href="study-methods.html">
+        <i class="fa-solid fa-list"></i> <h3>study-methods</h3>
+      </a>
+    </li>
+    
+      </ul>
+    </nav>
+  </aside>
+
+    <main class="main-content">
+      <div class="time-date">
+        <h1 id="clock">--:--</h1>
+        <p id="date">Loading date...</p>
+      </div>
+
+      <section class="greeting-card">
+        <h2 id="greeting">Good Afternoon, Student.</h2>
+        <p>You have 0 tasks due today.</p>
+      </section>
+
+      <section class="quick-task">
+        <h3>Quick add task</h3>
+        <form id="taskForm">
+          <input type="text" placeholder="Subject" required />
+          <input type="date" required />
+          <input type="time" required />
+          <button type="submit">+</button>
+        </form>
+      </section>
+
+      <div class="cards-container">
+        <div class="card upcoming-tasks">
+          <h3>Upcoming Tasks</h3>
+          <div class="date-header">
+            <button class="nav-btn" id="task-prev">&lt;</button>
+            <span id="task-date"></span>
+            <button class="nav-btn" id="task-next">&gt;</button>
+          </div>
+          <ul id="task-list">
+            <li>No tasks due today.</li>
+          </ul>
+        </div>
+
+        <div class="card upcoming-exams">
+          <h3>Upcoming Exams</h3>
+          <div class="date-header">
+            <button class="nav-btn" id="exam-prev">&lt;</button>
+            <span id="exam-date"></span>
+            <button class="nav-btn" id="exam-next">&gt;</button>
+          </div>
+          <ul id="exam-list">
+            <li>No exams scheduled today.</li>
+          </ul>
+        </div>
+
+        <a href="focus mode.html" class="focus-card-link">
+          <div class="card focus-timer-card">
+            <h3>Focus Timer</h3>
+            <p>25:00</p>
+            <button class="start-btn">Start</button>
+          </div>
+        </a>
+      </div>
+    </main>
+  </div>
+</div>
+</div>
+
+  <script src="dshbrd.js"></script>
+</body>
+</html>

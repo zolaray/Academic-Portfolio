@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Exam.css">
+
+  <title>Exams</title>
+</head>
+<body>
+  <header class="page-header">
+    <h1>New Exam</h1>
+  </header>
+
+ <div class="container"></div>
+
+  <div class="Exam">
+    <div class="section">
+      <label class="label">Select Subject*</label>
+      <div class="subjects" id="subject-list">
+        <button>English</button>
+        <button>Mathematics</button>
+        <button>Science</button>
+        <button>Chemistry</button>
+        <button>History</button>
+        <button>Computer Science</button>
+        <button class="add-new" id="add-new-btn">+ Add new</button>
+        <div id="new-subject-form" style="display: none; margin-top: 10px;">
+          <input type="text" id="new-subject-input" placeholder="New Subject" />
+          <button onclick="addSubject()">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="label">Mode</label>
+      <div class="mode">
+        <button>In person</button>
+        <button>Online</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="label">Module*</label>
+      <textarea rows="4"   placeholder="Module Name"></textarea>
+    </div>
+
+    <div class="section">
+      <label class="label">Online URL</label>
+      <textarea rows="4" placeholder="Paste URL Here"></textarea>
+    </div>
+
+    <div class="section_row">
+      <div class="section">
+        <label class="label">Date *</label>
+        <input type="text" id="custom-date" placeholder="Select a date" />
+        <div id="calendar" class="calendar hidden"></div>
+      </div>
+      <div class="section">
+        <label class="label">Time *</label>
+        <input type="time" />
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="label">Duration (In minutes)*</label>
+      <textarea rows="4" placeholder="Duration (In minutes)"></textarea>
+    </div>
+
+    
+     <div class="confirmation">
+       <button class="back-button" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+       <div class="right-buttons">
+       <button class="cancel-btn">Cancel</button>
+        <button class="save-btn">Save</button>
+     </div>
+     </div>
+
+</div>
+<script src="Exm.js"></script>
+
+</body>
+
+</html>

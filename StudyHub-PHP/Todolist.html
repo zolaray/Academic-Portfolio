@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub | Focus Tasks</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(30, 60, 114, 0.6), rgba(42, 82, 152, 0.6)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .todo-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(74, 107, 255, 0.15);
+            border-left: 4px solid #4a6bff;
+            backdrop-filter: blur(8px);
+        }
+
+        .todo-header {
+            color: #1345b4;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .todo-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .todo-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #eaeef7;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .todo-input:focus {
+            outline: none;
+            border-color: #4a6bff;
+            box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+        }
+
+        .add-btn {
+            background: #4a6bff;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #3a5bef;
+            transform: translateY(-2px);
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .task-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .task-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a6bff;
+            border-radius: 4px;
+            margin-right: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .task-checkbox:checked {
+            background-color: #4a6bff;
+        }
+
+        .task-checkbox:checked::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            left: 3px;
+            top: -2px;
+        }
+
+        .task-text {
+            flex: 1;
+            color: #1345b4;
+            font-weight: 500;
+        }
+
+        .task-text.completed {
+            text-decoration: line-through;
+            color: #7a8db8;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            padding: 0 5px;
+        }
+
+        .task-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #7a8db8;
+            padding: 30px 0;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .task-item {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .back-button {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1 class="todo-header">Focus Tasks</h1>
+        
+        <form class="todo-form" id="task-form">
+            <input type="text" class="todo-input" id="task-input" placeholder="What to focus on?" required>
+            <button type="submit" class="add-btn">Add</button>
+        </form>
+        
+        <ul class="task-list" id="task-list">
+           
+            <li class="empty-state">No tasks yet. Add your first focus item!</li>
+        </ul>
+        <a href="dashboard.html" class="back-button">
+  ← Back to Dashboard
+</a>
+
+    </div>
+ 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskForm = document.getElementById('task-form');
+            const taskInput = document.getElementById('task-input');
+            const taskList = document.getElementById('task-list');
+            
+            loadTasks();
+            
+            taskForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const taskText = taskInput.value.trim();
+                
+                if (taskText) {
+                    addTask(taskText);
+                    taskInput.value = '';
+                    saveTasks();
+                }
+            });
+            
+            function addTask(taskText) {
+                
+                const emptyState = document.querySelector('.empty-state');
+                if (emptyState) emptyState.remove();
+                
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task-item';
+                
+                taskItem.innerHTML = `
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="task-text">${taskText}</span>
+                    <button class="delete-btn">×</button>
+                `;
+                
+                const checkbox = taskItem.querySelector('.task-checkbox');
+                const deleteBtn = taskItem.querySelector('.delete-btn');
+                
+                checkbox.addEventListener('change', function() {
+                    taskItem.querySelector('.task-text').classList.toggle('completed');
+                    saveTasks();
+                });
+                
+                deleteBtn.addEventListener('click', function() {
+                    taskItem.classList.add('fading');
+                    setTimeout(() => {
+                        taskItem.remove();
+                        saveTasks();
+                        if (taskList.children.length === 0) {
+                            showEmptyState();
+                        }
+                    }, 300);
+                });
+                
+                taskList.appendChild(taskItem);
+            }
+            
+            function saveTasks() {
+                const tasks = [];
+                document.querySelectorAll('.task-item').forEach(item => {
+                    tasks.push({
+                        text: item.querySelector('.task-text').textContent,
+                        completed: item.querySelector('.task-checkbox').checked
+                    });
+                });
+                localStorage.setItem('studyhub-tasks', JSON.stringify(tasks));
+            }
+            
+            function loadTasks() {
+                const savedTasks = JSON.parse(localStorage.getItem('studyhub-tasks')) || [];
+                if (savedTasks.length > 0) {
+                    document.querySelector('.empty-state')?.remove();
+                    savedTasks.forEach(task => {
+                        addTask(task.text);
+                        const items = document.querySelectorAll('.task-item');
+                        const lastItem = items[items.length - 1];
+                        if (task.completed) {
+                            lastItem.querySelector('.task-checkbox').checked = true;
+                            lastItem.querySelector('.task-text').classList.add('completed');
+                        }
+                    });
+                }
+            }
+            
+            function showEmptyState() {
+                const emptyState = document.createElement('li');
+                emptyState.className = 'empty-state';
+                emptyState.textContent = 'No tasks yet. Add your first focus item!';
+                taskList.appendChild(emptyState);
+            }
+        });
+    </script>
+    
+</body>
+</html>
